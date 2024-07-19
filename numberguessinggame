@@ -1,0 +1,70 @@
+import java.util.*;
+
+public class NumberGuessingGame
+{
+    public static void main(String[] args) 
+    {
+        Scanner sc = new Scanner(System.in);
+        Random ran = new Random();
+        boolean tryagain = true;
+        int totalRounds = 0;
+        int totalScore = 0;
+
+        while (tryagain) {
+            int guessnum = random.nextInt(100) + 1;
+            int numoftries = 0;
+            int maxtries = 6;
+            boolean win = false;
+
+            System.out.println("Guess the number between 1 to 100 !! You have only:" + maxtries+" tries left" );
+
+            while (!win && numoftries < maxtries) {
+                System.out.println("Enter your guess:");
+                int guess = 0;
+                boolean input = false;
+
+                while (!input) {
+                    try {
+                        guess = sc.nextInt();
+                        input = true;
+                    } catch (InputMismatchException e) {
+                        System.out.println("Please enter a valid number.");
+                    }
+                }
+
+                numoftries++;
+
+                if (guess == guessnum) {
+                    win = true;
+                    System.out.println("Correct number!!");
+                } else if (guess < guessnum) {
+                    System.out.println("Too low!");
+                } else {
+                    System.out.println("Too high!");
+                }
+
+                if (!win && numoftries == maxtries) {
+                    System.out.println(" Reached the maximum number of attempts. The correct number was " + numberToGuess + ".");
+                }
+            }
+
+            if (win) {
+                totalscore += (maxtries - numOftries + 1);
+                System.out.println("You win! It took you " + numberOfTries + " tries.");
+            } else {
+                System.out.println("Lost this round.");
+            }
+
+            int totalrounds++;
+
+            System.out.println("Do you want another try? (yes/no)");
+            String response = sc.next().trim().toLowerCase();
+            if (!response.equals("yes")) {
+                tryagain = false;
+            }
+        }
+
+        System.out.println("Game over!" + totalrounds);
+        System.out.println( "Total score is" + totalscore);
+    }
+}
