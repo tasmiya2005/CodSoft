@@ -1,0 +1,31 @@
+import java.util.*;
+public class Currencyconvo
+{
+    public static void main(String args[])
+    {
+        Scanner sc=new Scanner(System.in);
+        double convertedamount=0,amount=0;
+        System.out.println("ENTER 1 to convert CANADIAN DOLLAR TO INDIAN RUPEES");
+        System.out.println("ENTER 2 to convert AMERICAN DOLLAR TO INDIAN RUPEES");
+        int n=sc.nextInt();
+        System.out.println("ENTER THE AMOUNT");
+                amount=sc.nextDouble();
+        switch(n){
+            case 1:{
+                convertedamount=amount*61.33;
+                System.out.println("CONVERTED AMOUNT CANADIAN DOLLAR TO INDIAN RUPEE :"+convertedamount);
+                 break;
+                 }
+                case 2:{
+                    convertedamount=amount*83.55;
+                    System.out.println("CONVERTED AMOUNT AMERICAN DOLLAR TO INDIAN RUPEE :"+convertedamount);
+                    break;
+                }
+                    default:
+                    {
+                        System.out.println("INVALID!!");
+                    }
+                
+        }
+    }
+}
