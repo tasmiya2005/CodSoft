@@ -1,0 +1,101 @@
+public class Bank {
+    private double bal;
+
+    public Bank(double initialbal)
+    {
+        if (initialbal >= 0) {
+            this.bal = initialbal;
+        } else {
+            this.bal = 0;
+        }
+    }
+    public double checkbal() {
+        return bal;
+    }
+
+    public void deposit(double amt) 
+    {
+        if (amt > 0) 
+        {
+            bal += amt;
+            System.out.println("Thw amount has deposited: $" + amt);
+        } 
+    }
+    public boolean withdraw(double amt) {
+        if (amt > 0 && amt <= bal) {
+            bal -= amt;
+            System.out.println("WITHDERW AMOUNT : $" + amt);
+            return true;
+        } else if (amt > bal) {
+            System.out.println("INSUFFICIENT BAKANCE");
+            return false;
+        } else {
+            System.out.println("INVALID");
+            return false;
+        }
+    }
+}
+public class ATM
+{
+    private Bank acc;
+    public ATM(Bank acc)
+    {
+        this.acc = acc;
+    }
+
+    public void displayMenu() {
+        Scanner sc = new Sc(System.in);
+        int choice;
+
+        do {
+            System.out.println("ATM Menu:");
+            System.out.println("1. Check Balance");
+            System.out.println("2. Deposit");
+            System.out.println("3. Withdraw");
+            System.out.println("4. Exit");
+            System.out.print("Enter your choice: ");
+            n = sc.nextInt();
+
+            switch (choice) 
+            {
+                case 1:
+                    checkBalance();
+                    break;
+                case 2:
+                    deposit(sc);
+                    break;
+                case 3:
+                    withdraw(sc);
+                    break;
+                case 4:
+                    System.out.println("THANK YOU !!VISIT AGAIN!!");
+                    break;
+                default:
+                    System.out.println("Invalid option");
+            }
+        } while (choice != 4);
+    }
+
+    private void checkBalance() {
+        System.out.println("Current balance:$" + account.getBalance());
+    }
+
+    private void deposit(Scanner scanner) {
+        System.out.print("Enter the amount need to be deposited: ");
+        double amt = sc.nextDouble();
+        acc.deposit(amt);
+    }
+
+    private void withdraw(Scanner scanner) {
+        System.out.print("Enter the amount need to be withdrawed: ");
+        double amt= sc.nextDouble();
+        acc.withdraw(amt);
+    }
+
+    public static void main(String[] args) {
+        Bank acc = new Bank(1000); 
+        ATM atm = new ATM(acc);
+        atm.displayMenu();
+    }
+}
+   
