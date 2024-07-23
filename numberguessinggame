@@ -1,24 +1,25 @@
 import java.util.*;
+import java.util.Random;
 
 public class NumberGuessingGame
 {
     public static void main(String[] args) 
     {
         Scanner sc = new Scanner(System.in);
-        Random ran = new Random();
+        Random random = new Random();
         boolean tryagain = true;
-        int totalRounds = 0;
-        int totalScore = 0;
+        int totalrounds = 0;
+        int totalscore = 0;
+        int numofTries = 0;
+        int maxtries = 6;
 
         while (tryagain) {
             int guessnum = random.nextInt(100) + 1;
-            int numoftries = 0;
-            int maxtries = 6;
             boolean win = false;
 
             System.out.println("Guess the number between 1 to 100 !! You have only:" + maxtries+" tries left" );
 
-            while (!win && numoftries < maxtries) {
+            while (!win && numofTries < maxtries) {
                 System.out.println("Enter your guess:");
                 int guess = 0;
                 boolean input = false;
@@ -32,7 +33,7 @@ public class NumberGuessingGame
                     }
                 }
 
-                numoftries++;
+                numofTries++;
 
                 if (guess == guessnum) {
                     win = true;
@@ -43,19 +44,19 @@ public class NumberGuessingGame
                     System.out.println("Too high!");
                 }
 
-                if (!win && numoftries == maxtries) {
-                    System.out.println(" Reached the maximum number of attempts. The correct number was " + numberToGuess + ".");
+                if (!win && numofTries == maxtries) {
+                    System.out.println(" Reached the maximum number of attempts. The correct number was " + guessnum + ".");
                 }
             }
 
             if (win) {
-                totalscore += (maxtries - numOftries + 1);
-                System.out.println("You win! It took you " + numberOfTries + " tries.");
+                totalscore += (maxtries - numofTries + 1);
+                System.out.println("You win! It took you " + numofTries + " tries.");
             } else {
                 System.out.println("Lost this round.");
             }
 
-            int totalrounds++;
+             totalrounds++;
 
             System.out.println("Do you want another try? (yes/no)");
             String response = sc.next().trim().toLowerCase();
